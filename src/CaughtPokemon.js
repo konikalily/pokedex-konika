@@ -1,3 +1,42 @@
+//date 17/10/2021-react-week3
+
+import React, { useState } from "react";
+const CaughtPokemon = (props) => {
+  let [caught, setCaught] = useState([]);
+  const [pokemonNameInput, setPokemonNameInput] = useState("");
+  const catchPokemon = () => {
+    /* let newPokemon = [
+      "Bulbasur",
+      "Squirtle",
+      "Mewtwo",
+      "Eevee",
+      "Charizard",
+      "Snorlax",
+      "Charmander",
+    ]; */
+    //let randomPokemon = Math.floor(Math.random() * newPokemon.length);
+    setCaught(caught.concat(pokemonNameInput));
+  };
+  const handleInputChange = (event) => {
+    setPokemonNameInput(event.target.value);
+  };
+  return (
+    <div>
+      <p>
+        Caught {caught.length} Pokemon on {props.date}
+      </p>
+      <input type="text" onChange={handleInputChange} />
+      <button onClick={catchPokemon}>Catch a Pokemon</button>
+      <ul>
+        {caught.map((pokemon, index) => (
+          <li key={index}>{pokemon}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+export default CaughtPokemon;
+
 // import { useState } from "react";
 
 // const CaughtPokemon = () => {
@@ -35,33 +74,33 @@
 // };
 // export default CaughtPokemon;
 
-import React from "react";
-import { useState } from "react";
+// import React from "react";
+// import { useState } from "react";
 
-const CaughtPokemon = () => {
-  const [caught, setCaught] = useState([]);
+// const CaughtPokemon = () => {
+//   const [caught, setCaught] = useState([]);
 
-  const newPokemon = ["Spearow", "Pikachu", "Ditto"];
+//   const newPokemon = ["Spearow", "Pikachu", "Ditto"];
 
-  const catchPokemon = () => {
-    const randomPokemon = Math.floor(Math.random() * newPokemon.length);
-    setCaught((previousCaught) => {
-      return previousCaught.concat(newPokemon[randomPokemon]);
-    });
-  };
-  const date = new Date().toLocaleDateString();
-  console.log(caught);
-  return (
-    <div>
-      <button onClick={catchPokemon}>Click Me!</button>
-      <p>
-        Caught {caught.length}Pokemon on {date}
-      </p>
-      {caught.map((item, i) => (
-        <li key={i}>{item}</li>
-      ))}
-    </div>
-  );
-};
+//   const catchPokemon = () => {
+//     const randomPokemon = Math.floor(Math.random() * newPokemon.length);
+//     setCaught((previousCaught) => {
+//       return previousCaught.concat(newPokemon[randomPokemon]);
+//     });
+//   };
+//   const date = new Date().toLocaleDateString();
+//   console.log(caught);
+//   return (
+//     <div>
+//       <button onClick={catchPokemon}>Click Me!</button>
+//       <p>
+//         Caught {caught.length}Pokemon on {date}
+//       </p>
+//       {caught.map((item, i) => (
+//         <li key={i}>{item}</li>
+//       ))}
+//     </div>
+//   );
+// };
 
-export default CaughtPokemon;
+// export default CaughtPokemon;
